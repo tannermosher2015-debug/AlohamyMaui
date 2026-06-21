@@ -32,7 +32,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- non-render-blocking font load (swap in on load); noscript fallback -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Figtree:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Figtree:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Figtree:wght@400;500;600;700&display=swap" /></noscript>
 
 <style>
 /* ============================================================
@@ -402,6 +405,22 @@ img{max-width:100%;display:block}
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem}
 .foot__base a{font-weight:600}
 @media (max-width:680px){.foot__grid{grid-template-columns:1fr 1fr}.foot__brand{grid-column:1 / -1}}
+
+/* ============================================================
+   HERO MOTION — whispered staggered entrance + slow photo drift
+   (only for users who haven't asked to reduce motion)
+   ============================================================ */
+@media (prefers-reduced-motion:no-preference){
+  .hero__inner > *{animation:heroIn .85s cubic-bezier(.2,.7,.2,1) both}
+  .hero__eyebrow{animation-delay:.08s}
+  .hero h1{animation-delay:.2s}
+  .hero__sub{animation-delay:.42s}
+  .hero__cta{animation-delay:.58s}
+  .hero__facts{animation-delay:.74s}
+  .hero__media img.loaded{animation:kenburns 24s ease-out both}
+}
+@keyframes heroIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.08)}}
 
 /* ============================================================
    MOBILE REFINEMENTS
