@@ -1,0 +1,7 @@
+# working archive — scraped originals + build scripts, do not publish
+images/source/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+desktop.ini
