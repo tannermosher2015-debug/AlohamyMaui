@@ -404,6 +404,20 @@ img{max-width:100%;display:block}
 @media (max-width:680px){.foot__grid{grid-template-columns:1fr 1fr}.foot__brand{grid-column:1 / -1}}
 
 /* ============================================================
+   MOBILE REFINEMENTS
+   ============================================================ */
+@media (max-width:620px){
+  /* hero stats: tidy 2x2 grid with honey accent bars, not mid-row dividers */
+  .hero__facts{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 1rem}
+  .hero__fact{border-right:0;margin-right:0;padding-right:0;padding-left:.85rem;
+    border-left:2px solid rgba(217,138,61,.7)}
+}
+@media (max-width:520px){
+  /* amenity lists go single-column so long items aren't cramped at ~116px */
+  .condo__cols{grid-template-columns:1fr;gap:1.35rem}
+}
+
+/* ============================================================
    SCROLL-REVEAL
    ============================================================ */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
